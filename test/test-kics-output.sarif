@@ -1,0 +1,429 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "KICS",
+          "version": "v1.7.7",
+          "fullName": "Keeping Infrastructure as Code Secure",
+          "informationUri": "https://www.kics.io/",
+          "rules": [
+            {
+              "id": "fd54f200-402c-4333-a5a4-36ef6709af2f",
+              "name": "Missing User Instruction",
+              "shortDescription": {
+                "text": "Missing User Instruction"
+              },
+              "fullDescription": {
+                "text": "A user should be specified in the dockerfile, otherwise the image will run as root"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://docs.docker.com/engine/reference/builder/#user",
+              "relationships": [
+                {
+                  "target": {
+                    "id": "CAT005",
+                    "index": 14,
+                    "toolComponent": {
+                      "name": "Categories",
+                      "guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+                      "index": 0
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "f2f903fb-b977-461e-98d7-b3e2185c6118",
+              "name": "Pip install Keeping Cached Packages",
+              "shortDescription": {
+                "text": "Pip install Keeping Cached Packages"
+              },
+              "fullDescription": {
+                "text": "When installing packages with pip, the '--no-cache-dir' flag should be set to make Docker images smaller"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "helpUri": "https://docs.docker.com/develop/develop-images/dockerfile_best-practices/",
+              "relationships": [
+                {
+                  "target": {
+                    "id": "CAT013",
+                    "index": 12,
+                    "toolComponent": {
+                      "name": "Categories",
+                      "guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+                      "index": 0
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "aa93e17f-b6db-4162-9334-c70334e7ac28",
+              "name": "Chown Flag Exists",
+              "shortDescription": {
+                "text": "Chown Flag Exists"
+              },
+              "fullDescription": {
+                "text": "It is considered a best practice for every executable in a container to be owned by the root user even if it is executed by a non-root user, only execution permissions are required on the file, not ownership"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "helpUri": "https://docs.docker.com/develop/develop-images/dockerfile_best-practices/",
+              "relationships": [
+                {
+                  "target": {
+                    "id": "CAT004",
+                    "index": 6,
+                    "toolComponent": {
+                      "name": "Categories",
+                      "guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+                      "index": 0
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "b03a748a-542d-44f4-bb86-9199ab4fd2d5",
+              "name": "Healthcheck Instruction Missing",
+              "shortDescription": {
+                "text": "Healthcheck Instruction Missing"
+              },
+              "fullDescription": {
+                "text": "Ensure that HEALTHCHECK is being used. The HEALTHCHECK instruction tells Docker how to test a container to check that it is still working"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "helpUri": "https://docs.docker.com/engine/reference/builder/#healthcheck",
+              "relationships": [
+                {
+                  "target": {
+                    "id": "CAT007",
+                    "index": 2,
+                    "toolComponent": {
+                      "name": "Categories",
+                      "guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+                      "index": 0
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "0008c003-79aa-42d8-95b8-1c2fe37dbfe6",
+              "name": "Multiple RUN, ADD, COPY, Instructions Listed",
+              "shortDescription": {
+                "text": "Multiple RUN, ADD, COPY, Instructions Listed"
+              },
+              "fullDescription": {
+                "text": "Multiple commands (RUN, COPY, ADD) should be grouped in order to reduce the number of layers."
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "helpUri": "https://sysdig.com/blog/dockerfile-best-practices/",
+              "relationships": [
+                {
+                  "target": {
+                    "id": "CAT004",
+                    "index": 6,
+                    "toolComponent": {
+                      "name": "Categories",
+                      "guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+                      "index": 0
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "fd54f200-402c-4333-a5a4-36ef6709af2f",
+          "ruleIndex": 0,
+          "kind": "fail",
+          "message": {
+            "text": "The 'Dockerfile' does not contain any 'USER' instruction"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "test/missing_user_instruction-positive.dockerfile"
+                },
+                "region": {
+                  "startLine": 2
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "f2f903fb-b977-461e-98d7-b3e2185c6118",
+          "ruleIndex": 1,
+          "kind": "fail",
+          "message": {
+            "text": "The '--no-cache-dir' flag isn't set when running 'pip/pip3 install'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "test/missing_user_instruction-positive.dockerfile"
+                },
+                "region": {
+                  "startLine": 3
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "aa93e17f-b6db-4162-9334-c70334e7ac28",
+          "ruleIndex": 2,
+          "kind": "fail",
+          "message": {
+            "text": "The 'Dockerfile' contains the 'chown' flag"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "test/missing_user_instruction-positive.dockerfile"
+                },
+                "region": {
+                  "startLine": 5
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "b03a748a-542d-44f4-bb86-9199ab4fd2d5",
+          "ruleIndex": 3,
+          "kind": "fail",
+          "message": {
+            "text": "Dockerfile doesn't contain instruction 'HEALTHCHECK'"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "test/missing_user_instruction-positive.dockerfile"
+                },
+                "region": {
+                  "startLine": 2
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "0008c003-79aa-42d8-95b8-1c2fe37dbfe6",
+          "ruleIndex": 4,
+          "kind": "fail",
+          "message": {
+            "text": "There are RUN instructions that could be grouped"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "test/missing_user_instruction-positive.dockerfile"
+                },
+                "region": {
+                  "startLine": 3
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "taxonomies": [
+        {
+          "guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+          "name": "Categories",
+          "fullDescription": {
+            "text": "This taxonomy contains the types an issue can assume"
+          },
+          "shortDescription": {
+            "text": "Vulnerabilities categories"
+          },
+          "taxa": [
+            {
+              "id": "CAT000",
+              "name": "Undefined Category",
+              "shortDescription": {
+                "text": "Category is not defined"
+              },
+              "fullDescription": {
+                "text": "Category is not defined"
+              }
+            },
+            {
+              "id": "CAT003",
+              "name": "Backup",
+              "shortDescription": {
+                "text": "Survivability and Recovery"
+              },
+              "fullDescription": {
+                "text": "Survivability and Recovery"
+              }
+            },
+            {
+              "id": "CAT007",
+              "name": "Insecure Configurations",
+              "shortDescription": {
+                "text": "Configurations which expose the application unnecessarily"
+              },
+              "fullDescription": {
+                "text": "Configurations which expose the application unnecessarily"
+              }
+            },
+            {
+              "id": "CAT008",
+              "name": "Insecure Defaults",
+              "shortDescription": {
+                "text": "Configurations that are insecure by default"
+              },
+              "fullDescription": {
+                "text": "Configurations that are insecure by default"
+              }
+            },
+            {
+              "id": "CAT009",
+              "name": "Networking and Firewall",
+              "shortDescription": {
+                "text": "Network port exposure and firewall configuration"
+              },
+              "fullDescription": {
+                "text": "Network port exposure and firewall configuration"
+              }
+            },
+            {
+              "id": "CAT015",
+              "name": "Bill Of Materials",
+              "shortDescription": {
+                "text": "List of resources provisioned"
+              },
+              "fullDescription": {
+                "text": "List of resources provisioned"
+              }
+            },
+            {
+              "id": "CAT004",
+              "name": "Best Practices",
+              "shortDescription": {
+                "text": "Metadata management"
+              },
+              "fullDescription": {
+                "text": "Metadata management"
+              }
+            },
+            {
+              "id": "CAT010",
+              "name": "Observability",
+              "shortDescription": {
+                "text": "Logging and Monitoring"
+              },
+              "fullDescription": {
+                "text": "Logging and Monitoring"
+              }
+            },
+            {
+              "id": "CAT014",
+              "name": "Structure and Semantics",
+              "shortDescription": {
+                "text": "Malformed document structure or inadequate semantics"
+              },
+              "fullDescription": {
+                "text": "Malformed document structure or inadequate semantics"
+              }
+            },
+            {
+              "id": "CAT001",
+              "name": "Access Control",
+              "shortDescription": {
+                "text": "Service permission and identity management"
+              },
+              "fullDescription": {
+                "text": "Service permission and identity management"
+              }
+            },
+            {
+              "id": "CAT011",
+              "name": "Resource Management",
+              "shortDescription": {
+                "text": "Resource and privilege limit configuration"
+              },
+              "fullDescription": {
+                "text": "Resource and privilege limit configuration"
+              }
+            },
+            {
+              "id": "CAT012",
+              "name": "Secret Management",
+              "shortDescription": {
+                "text": "Secret and Key management"
+              },
+              "fullDescription": {
+                "text": "Secret and Key management"
+              }
+            },
+            {
+              "id": "CAT013",
+              "name": "Supply-Chain",
+              "shortDescription": {
+                "text": "Dependency version management"
+              },
+              "fullDescription": {
+                "text": "Dependency version management"
+              }
+            },
+            {
+              "id": "CAT002",
+              "name": "Availability",
+              "shortDescription": {
+                "text": "Reliability and Scalability"
+              },
+              "fullDescription": {
+                "text": "Reliability and Scalability"
+              }
+            },
+            {
+              "id": "CAT005",
+              "name": "Build Process",
+              "shortDescription": {
+                "text": "Insecure configurations when building/deploying"
+              },
+              "fullDescription": {
+                "text": "Insecure configurations when building/deploying"
+              }
+            },
+            {
+              "id": "CAT006",
+              "name": "Encryption",
+              "shortDescription": {
+                "text": "Data Security and Encryption configuration"
+              },
+              "fullDescription": {
+                "text": "Data Security and Encryption configuration"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

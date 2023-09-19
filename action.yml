@@ -1,0 +1,45 @@
+name: "Issue Injector"
+description: "Process SARIF files and create GitHub issues based on findings"
+author: "scherersebastian"
+branding:
+  icon: "check-circle"
+  color: "green"
+
+inputs:
+  SARIF_FILE:
+    description: "Path to the SARIF file"
+    required: true
+  SEVERITY:
+    description: "Severity level to filter"
+    required: false
+    default: "error"
+  GITHUB_TOKEN:
+    description: "GitHub token to authenticate with the API"
+    required: true
+  GITHUB_REPO:
+    description: "The GitHub repository where issues should be created"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.x"
+
+    - name: Install required packages
+      run: pip install requests
+      shell: bash
+
+    - name: Run script
+      run: python issue-injector.py
+      env:
+        SARIF_FILE: ${{ inputs.SARIF_FILE }}
+        SEVERITY: ${{ inputs.SEVERITY }}
+        GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
+        GITHUB_REPO: ${{ inputs.GITHUB_REPO }}
+      shell: bash

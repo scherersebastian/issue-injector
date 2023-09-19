@@ -1,0 +1,26 @@
+name: Test Action
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  test-action:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      issues: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Use My Custom Action
+        uses: ./
+        with:
+          SARIF_FILE: "test/test-kics-output.sarif"
+          SEVERITY: "error"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPO: "scherersebastian/sarif-issues-action"
