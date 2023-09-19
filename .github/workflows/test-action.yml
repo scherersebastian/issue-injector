@@ -23,4 +23,4 @@ jobs:
           SARIF_FILE: "test/test-kics-output.sarif"
           SEVERITY: "error"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_REPO: "scherersebastian/sarif-issues-action"
+          GITHUB_REPO: "scherersebastian/issue-injector"
