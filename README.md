@@ -1,14 +1,14 @@
-# Issue Injector
+# IssueInjector
 
-**IssueInjector** is a GitHub Action adept at converting security findings, notably from SARIF (Static Analysis Results Interchange Format), into GitHub Issues. It not only creates issues for new findings but also auto-closes resolved ones.
+**IssueInjector** is a GitHub action adept at converting security findings, notably from SARIF (Static Analysis Results Interchange Format), into GitHub issues. It not only creates issues for new findings but also auto-closes resolved ones.
 
-This tool is compatible with nearly all security tools that use the SARIF format. It bridges the gap between security scan results and your GitHub Issues tab, automatically generating issues from detected vulnerabilities and risks.
+This tool is compatible with nearly all security tools that use the SARIF format. It bridges the gap between security scan results and your GitHub issues tab, automatically generating issues from detected vulnerabilities and risks.
 
-A distinguishing feature of IssueInjector is its capability to bypass the GitHub Advanced Security Dashboard. This means users can view and manage findings directly in GitHub, even without the Advanced Security subscription, eliminating the need to switch between platforms for each security tool.
+A distinguishing feature of IssueInjector is its capability to _bypass the GitHub Advanced Security Dashboard_. This means users can view and manage findings directly in GitHub, even _without the Advanced Security_ subscription, eliminating the need to switch between platforms for each security tool.
 
 ## How To Use
 
-The Issue Injector GitHub Action processes SARIF files to create GitHub issues based on the findings. It filters findings based on severity and ensures that issues are properly labeled.
+The IssueInjector GitHub Action processes SARIF files to create GitHub issues based on the findings. It filters findings based on severity and ensures that issues are properly labeled.
 
 ### Prerequisites
 
@@ -39,7 +39,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Use Issue Injector
+      - name: Use IssueInjector
         uses: scherersebastian/issue-injector@v1.0.0 # replace `v1` with the version you'd like to use
         with:
           SARIF_FILE: "path/to/your/sarif-file.sarif"
@@ -50,7 +50,7 @@ jobs:
 
 2. _Set Required Secrets:_ Make sure to set the GITHUB_TOKEN secret to `contents: read, issues: write`.
 
-3. _Run the Workflow:_ Once your workflow file is set up, push the changes to your GitHub repository. This will trigger the workflow, and the Issue Injector action will process the SARIF file and create issues based on the findings.
+3. _Run the Workflow:_ Once your workflow file is set up, push the changes to your GitHub repository. This will trigger the workflow, and the IssueInjector action will process the SARIF file and create issues based on the findings.
 
 4. _Check for Issues:_ After the workflow runs, check your GitHub repository's "Issues" tab for newly created issues.
 
