@@ -71,6 +71,8 @@ jobs:
 
 - Location changes result in hash mismatch: If the location of a finding is changed, such as by renaming a file, the hash generated for that finding will differ. This could lead to duplicate issues being created.
 
+- IssueInjector is "soft release ready", indicating potential bugs. One known limitation is inconsistent issue creation due to missing or varied SARIF file values across different tools. Feedback on discrepancies is appreciated to enhance the tool's performance.
+
 ## License
 
 The scripts and documentation in this project are released under the MIT License.
