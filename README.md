@@ -1,16 +1,10 @@
 # Issue Injector
 
-**IssueInjector** is a GitHub Action that excels in turning security findings, especially those in the SARIF (Static Analysis Results Interchange Format), into actionable GitHub Issues.
+**IssueInjector** is a GitHub Action adept at converting security findings, notably from SARIF (Static Analysis Results Interchange Format), into GitHub Issues. It not only creates issues for new findings but also auto-closes resolved ones.
 
-This makes it extremely versatile, compatible with almost any security tool that exports findings in the SARIF format.
+This tool is compatible with nearly all security tools that use the SARIF format. It bridges the gap between security scan results and your GitHub Issues tab, automatically generating issues from detected vulnerabilities and risks.
 
-Acting as a bridge between your security scan outputs and your GitHub Issues tab, it auto-populates issues based on identified vulnerabilities, risks, or areas that need attention.
-
-By handling this conversion seamlessly, IssueInjector allows your team to shift their focus from identification to immediate action and resolution.
-
-In essence, it's an automated, highly adaptable triage system for your code's security, facilitating quicker fixes and a more secure end product.
-
-With this Action, you can bypass the GitHub Advanced Security Dashboard.
+A distinguishing feature of IssueInjector is its capability to bypass the GitHub Advanced Security Dashboard. This means users can view and manage findings directly in GitHub, even without the Advanced Security subscription, eliminating the need to switch between platforms for each security tool.
 
 ## How To Use
 
